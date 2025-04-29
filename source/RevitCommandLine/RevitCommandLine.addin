@@ -1,0 +1,11 @@
+﻿<RevitAddIns>
+    <AddIn Type="Application">
+        <Name>RevitCommandLine</Name>
+        <Assembly>RevitCommandLine/RevitCommandLine.dll</Assembly>
+        <AddInId>D68BC3A3-B0A4-48E0-A22D-E7837A42A5BF</AddInId>
+        <FullClassName>RevitCommandLine.Application</FullClassName>
+        <VendorId>Development</VendorId>
+        <VendorDescription></VendorDescription>
+        <VendorEmail></VendorEmail>
+    </AddIn>
+</RevitAddIns>

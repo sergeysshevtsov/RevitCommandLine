@@ -1,0 +1,26 @@
+﻿<Window
+    x:Class="RevitCommandLine.UI.CommandLine.Views.CommandLineView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cbControl="clr-namespace:RevitCommandLine.UI.CommandLine.Views.CustomControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:RevitCommandLine.UI.CommandLine.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="450"
+    Height="65"
+    Background="Transparent"
+    ResizeMode="NoResize"
+    WindowStyle="None">
+    <Border
+        BorderBrush="#1E88E5"
+        BorderThickness="2"
+        CornerRadius="3">
+        <Grid Background="White">
+            <cbControl:ComboBoxAC
+                x:Name="comboBoxAC"
+                Margin="10"
+                FontFamily="Roboto"
+                FontSize="16" />
+        </Grid>
+    </Border>
+</Window>

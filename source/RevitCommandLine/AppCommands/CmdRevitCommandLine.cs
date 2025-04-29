@@ -76,7 +76,8 @@ internal class CmdRevitCommandLine : IExternalCommand
         };
 
         window.ShowDialog();
-        if (window.CommandItem != null)
+
+        if (window.CommandItem != null && window.CommandItem?.CommandType == UI.CommandLine.Models.CommandType.Standard)
         {
             var UIApp = commandData.Application;
             var postableCommand = (PostableCommand)Enum.Parse(typeof(PostableCommand), window.CommandItem.Name);
@@ -85,6 +86,7 @@ internal class CmdRevitCommandLine : IExternalCommand
             if (UIApp.CanPostCommand(revitCmd))
                 UIApp.PostCommand(revitCmd);
         }
+
         return Result.Succeeded;
     }
 }

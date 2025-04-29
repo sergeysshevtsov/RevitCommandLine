@@ -1,6 +1,7 @@
 ﻿namespace RevitCommandLine.UI.CommandLine.Models;
 public class CommandItem
 {
+    public CommandType CommandType { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
 

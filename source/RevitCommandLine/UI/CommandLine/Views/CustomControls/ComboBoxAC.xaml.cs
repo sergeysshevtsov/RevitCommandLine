@@ -16,7 +16,7 @@ namespace RevitCommandLine.UI.CommandLine.Views.CustomControls
         public ComboBoxAC()
         {
             InitializeComponent();
-            
+
             DataContext = this;
         }
 
@@ -114,39 +114,7 @@ namespace RevitCommandLine.UI.CommandLine.Views.CustomControls
             }
 
             var searchText = string.Concat(comboBoxAutoComplete.Text, e.Text);
-            if (!string.IsNullOrEmpty(searchText))
-                view.Filter = item =>
-                {
-                    if (item is CommandItem lineItem)
-                    {
-                        comboBoxAutoComplete.SelectedIndex = -1;
-                        comboBoxAutoComplete.IsDropDownOpen = true;
-
-                        if (FilterMode == AutoCompleteFilterMode.Contains || FilterMode == AutoCompleteFilterMode.None)
-                        {
-                            return (!string.IsNullOrEmpty(lineItem.Name) && lineItem.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                               (!string.IsNullOrEmpty(lineItem.Description) && lineItem.Description.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0);
-                        }
-
-                        if (FilterMode == AutoCompleteFilterMode.Equals)
-                        {
-                            return (!string.IsNullOrEmpty(lineItem.Name) && lineItem.Name.Equals(searchText)) ||
-                               (!string.IsNullOrEmpty(lineItem.Description) && lineItem.Description.Equals(searchText));
-                        }
-
-                        if (FilterMode == AutoCompleteFilterMode.StartsWith)
-                        {
-                            return (!string.IsNullOrEmpty(lineItem.Name) && lineItem.Name.StartsWith(searchText, StringComparison.OrdinalIgnoreCase)) ||
-                               (!string.IsNullOrEmpty(lineItem.Description) && lineItem.Description.StartsWith(searchText, StringComparison.OrdinalIgnoreCase));
-                        }
-                    }
-                    return false;
-                };
-            else
-            {
-                view.Filter = null;
-                comboBoxAutoComplete.IsDropDownOpen = false;
-            }
+            FilterComboboxList(view, searchText);
         }
 
         private async void comboBoxAutoComplete_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -163,7 +131,14 @@ namespace RevitCommandLine.UI.CommandLine.Views.CustomControls
                 {
                     comboBoxAutoComplete.SelectedItem = null;
                     comboBoxAutoComplete.IsDropDownOpen = false;
+
                     return;
+                }
+                else
+                {
+                    ICollectionView view = CollectionViewSource.GetDefaultView(comboBoxAutoComplete.Items);
+                    var searchText = comboBoxAutoComplete.Text.Substring(0, comboBoxAutoComplete.Text.Length - 1);
+                    FilterComboboxList(view, searchText);
                 }
             }
             else if (e.Key == Key.Escape)
@@ -176,12 +151,6 @@ namespace RevitCommandLine.UI.CommandLine.Views.CustomControls
             await Task.Factory.StartNew(() => { Thread.Sleep(300); });
             if (string.IsNullOrEmpty(comboBoxAutoComplete.Text))
                 comboBoxAutoComplete_PreviewTextInput(null, null);
-
-            //if (string.IsNullOrEmpty(cmbAutoComplete.Text))
-            //{
-            //    cmbAutoComplete.SelectedItem = null;
-            //    cmbAutoComplete.IsDropDownOpen = false;
-            //}
         }
 
         private void comboBoxAutoComplete_KeyUp(object sender, KeyEventArgs e)
@@ -235,6 +204,43 @@ namespace RevitCommandLine.UI.CommandLine.Views.CustomControls
             {
                 border.BorderBrush = System.Windows.Media.Brushes.Black;
                 border.BorderThickness = new Thickness(.5);
+            }
+        }
+
+        private void FilterComboboxList(ICollectionView view, string searchText)
+        {
+            if (!string.IsNullOrEmpty(searchText))
+                view.Filter = item =>
+                {
+                    if (item is CommandItem lineItem)
+                    {
+                        comboBoxAutoComplete.SelectedIndex = -1;
+                        comboBoxAutoComplete.IsDropDownOpen = true;
+
+                        if (FilterMode == AutoCompleteFilterMode.Contains || FilterMode == AutoCompleteFilterMode.None)
+                        {
+                            return (!string.IsNullOrEmpty(lineItem.Name) && lineItem.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                               (!string.IsNullOrEmpty(lineItem.Description) && lineItem.Description.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0);
+                        }
+
+                        if (FilterMode == AutoCompleteFilterMode.Equals)
+                        {
+                            return (!string.IsNullOrEmpty(lineItem.Name) && lineItem.Name.Equals(searchText)) ||
+                               (!string.IsNullOrEmpty(lineItem.Description) && lineItem.Description.Equals(searchText));
+                        }
+
+                        if (FilterMode == AutoCompleteFilterMode.StartsWith)
+                        {
+                            return (!string.IsNullOrEmpty(lineItem.Name) && lineItem.Name.StartsWith(searchText, StringComparison.OrdinalIgnoreCase)) ||
+                               (!string.IsNullOrEmpty(lineItem.Description) && lineItem.Description.StartsWith(searchText, StringComparison.OrdinalIgnoreCase));
+                        }
+                    }
+                    return false;
+                };
+            else
+            {
+                view.Filter = null;
+                comboBoxAutoComplete.IsDropDownOpen = false;
             }
         }
     }

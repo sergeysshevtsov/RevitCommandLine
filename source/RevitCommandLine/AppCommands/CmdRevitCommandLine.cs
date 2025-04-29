@@ -85,7 +85,6 @@ internal class CmdRevitCommandLine : IExternalCommand
             if (UIApp.CanPostCommand(revitCmd))
                 UIApp.PostCommand(revitCmd);
         }
-
         return Result.Succeeded;
     }
 }

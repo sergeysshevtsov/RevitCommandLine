@@ -80,7 +80,7 @@ internal class CmdRevitCommandLine : IExternalCommand
         if (window.CommandItem != null && window.CommandItem?.CommandType == UI.CommandLine.Models.CommandType.Standard)
         {
             var UIApp = commandData.Application;
-            var postableCommand = (PostableCommand)Enum.Parse(typeof(PostableCommand), window.CommandItem.Name);
+            var postableCommand = (PostableCommand)Enum.Parse(typeof(PostableCommand), window.CommandItem.PostableCommandName);
             var revitCmd = RevitCommandId.LookupPostableCommandId(postableCommand);
 
             if (UIApp.CanPostCommand(revitCmd))

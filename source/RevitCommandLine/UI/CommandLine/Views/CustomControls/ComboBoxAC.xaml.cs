@@ -136,9 +136,9 @@ namespace RevitCommandLine.UI.CommandLine.Views.CustomControls
                 }
                 else
                 {
-                    ICollectionView view = CollectionViewSource.GetDefaultView(comboBoxAutoComplete.Items);
-                    var searchText = comboBoxAutoComplete.Text.Substring(0, comboBoxAutoComplete.Text.Length - 1);
-                    FilterComboboxList(view, searchText);
+                    //ICollectionView view = CollectionViewSource.GetDefaultView(comboBoxAutoComplete.Items);
+                    //var searchText = comboBoxAutoComplete.Text.Substring(0, comboBoxAutoComplete.Text.Length - 1);
+                    //FilterComboboxList(view, searchText);
                 }
             }
             else if (e.Key == Key.Escape)

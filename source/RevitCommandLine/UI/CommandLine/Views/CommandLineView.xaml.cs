@@ -12,7 +12,13 @@ public partial class CommandLineView : Window
 
         this.PreviewKeyDown += (s, e) =>
         {
-            if (e.Key == Key.Escape || e.Key == Key.Enter)
+            if (e.Key == Key.Escape)
+            {
+                Window_Deactivated(s, e);
+                CommandItem = null;
+            }
+            
+            if (e.Key == Key.Enter)
                 Window_Deactivated(s, e);
         };
 
@@ -206,6 +212,51 @@ public partial class CommandLineView : Window
         commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "InsertViewsFromFile", Description = "Insert → Load from Library → Insert from File → Insert Views from File" });
         commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Insert2DElementsFromFile", Description = "Insert → Load from Library → Insert from File → Insert 2D Elements from File" });
 
-        //Autodesk.Revit.UI.PostableCommand.Insert2DElementsFromFile
+        //-----------Annotate
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "AlignedDimension", Description = "Annotate → Dimension → Aligned" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "LinearDimension", Description = "Annotate → Dimension → Linear" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "AngularDimension", Description = "Annotate → Dimension → Angular" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "RadialDimension", Description = "Annotate → Dimension → Radial" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ArcLengthDimension", Description = "Annotate → Dimension → Arc Length" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "SpotElevation", Description = "Annotate → Dimension → Spot Elevation" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "SpotCoordinate", Description = "Annotate → Dimension → Spot Coordinate" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "SpotSlope", Description = "Annotate → Dimension → Spot Slope" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "DetailLine", Description = "Annotate → Detail → Detail Line" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "FilledRegion", Description = "Annotate → Detail → Region → Filled Region" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "MaskingRegion", Description = "Annotate → Detail → Region → Masking Region" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "DetailComponent", Description = "Annotate → Detail → Component → Detail Component" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "RepeatingDetailComponent", Description = "Annotate → Detail → Component → Repeating Detail Component" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "LegendComponent", Description = "Annotate → Detail → Component → Legend Component" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "RevisionCloud", Description = "Annotate → Detail → Revision Cloud" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Insulation", Description = "Annotate → Detail → Insulation" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Text", Description = "Annotate → Text → Text" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "CheckSpelling", Description = "Annotate → Text → Check Spelling" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "FindOrReplace", Description = "Annotate → Text → Find/Replace" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "TagByCategory", Description = "Annotate → Tag → Tag by Category" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "TagAllNotTagged", Description = "Annotate → Tag → Tag All" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "BeamAnnotations", Description = "Annotate → Tag → Beam Annotations" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "MultiCategoryTag", Description = "Annotate → Tag → Multi-Category Tag" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "MaterialTag", Description = "Annotate → Tag → Material Tag" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "AreaTag", Description = "Annotate → Tag → Area Tag" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "RoomTag", Description = "Annotate → Tag → Room Tag" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ViewReference", Description = "Annotate → Tag → View Reference" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "StairTreadOrRiserNumber", Description = "Annotate → Tag → Tread Number" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "AlignedMultiRebarAnnotation", Description = "Annotate → Tag → Multi-Rebar → Aligned Multi-Rebar Annotation" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "LinearMultiRebarAnnotation", Description = "Annotate → Tag → Multi-Rebar → Linear Multi-Rebar Annotation" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ElementKeynote", Description = "Annotate → Tag → Keynote → Element Keynote" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "MaterialKeynote", Description = "Annotate → Tag → Keynote → Material Keynote" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "UserKeynote", Description = "Annotate → Tag → Keynote → User Keynote" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "KeynotingSettings", Description = "Annotate → Tag → Keynote → Keynoting Settings" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "DuctLegend", Description = "Annotate → Color Fill → Duct Legend" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "PipeLegend", Description = "Annotate → Color Fill → Pipe Legend" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ColorFillLegend", Description = "Annotate → Color Fill → Color Fill Legend" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Symbol", Description = "Annotate → Symbol → Symbol" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "SpanDirectionSymbol", Description = "Annotate → Symbol → Span Direction" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "BeamSystemSymbol", Description = "Annotate → Symbol → Beam" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "StairPath", Description = "Annotate → Symbol → Stair Path" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "AreaReinforcementSymbol", Description = "Annotate → Symbol → Area" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "PathReinforcementSymbol", Description = "Annotate → Symbol → Path" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "RebarBendingDetail", Description = "Annotate → Symbol → Rebar" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "FabricReinforcementSymbol", Description = "Annotate → Symbol → Fabric" });
     }
 }

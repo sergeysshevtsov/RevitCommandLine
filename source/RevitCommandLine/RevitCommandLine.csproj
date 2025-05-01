@@ -64,6 +64,7 @@
 
     <ItemGroup>
       <Folder Include="UI\CommandLine\Commands\" />
+      <Folder Include="UI\CommandLine\ViewModels\" />
     </ItemGroup>
 
 </Project>

@@ -107,7 +107,7 @@ public partial class CommandLineView : Window
         commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ShowWorkPlane", Description = "Architecture → Work Plane → Show" });
         commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ReferencePlane", Description = "Architecture → Work Plane → Ref Plane" });
         commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "FormWorkPlaneView", Description = "Architecture → Work Plane → Viewer" });
-        //Autodesk.Revit.UI.PostableCommand.AreaBoundary
+        
         //-----------Structure
         commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Beam", Description = "Structure → Structure → Beam" });
         commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "StructuralTrusses", Description = "Structure → Structure → StructuralTrusses" });
@@ -125,6 +125,87 @@ public partial class CommandLineView : Window
         commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "SingleFabricSheetPlacement", Description = "Structure → Reinforcement → Fabric Sheet" });
         commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "EditRebarCover", Description = "Structure → Reinforcement → Cover" });
         commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "InsertCoupler", Description = "Structure → Reinforcement → Rebar Coupler" });
+        
+        //-----------Steel
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Plate", Description = "Steel → Fabrication Elements → Plate" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Bolts", Description = "Steel → Fabrication Elements → Bolts → Bolts" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Anchors", Description = "Steel → Fabrication Elements → Bolts → Anchors" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Holes", Description = "Steel → Fabrication Elements → Bolts → Holes" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ShearStuds", Description = "Steel → Fabrication Elements → Bolts → Shear Studs" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Welds", Description = "Steel → Fabrication Elements → Welds" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "CornerCut", Description = "Steel → Modifiers → Corner Cut" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "CopeSkewed", Description = "Steel → Modifiers → Notch Skewed" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Shorten", Description = "Steel → Modifiers → Shorten" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ContourCut", Description = "Steel → Modifiers → Contour Cut" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Cope", Description = "Steel → Parametric Cuts → Notch" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Miter", Description = "Steel → Parametric Cuts → Miter → Miter" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "SawCutFlange", Description = "Steel → Parametric Cuts → Miter → Saw cut - Flange" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "SawCutWeb", Description = "Steel → Parametric Cuts → Miter → Saw cut - Web" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "CutThrough", Description = "Steel → Parametric Cuts → Cut Through" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "CutBy", Description = "Steel → Parametric Cuts → Cut By" });
 
+        //----------Systems
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Duct", Description = "Systems → HVAC → Duct" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "DuctPlaceholder", Description = "Systems → HVAC → Duct Placeholder" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "DuctFitting", Description = "Systems → HVAC → Duct Fitting" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "DuctAccessory", Description = "Systems → HVAC → Duct Accessory" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ConvertToFlexDuct", Description = "Systems → HVAC → Convert to Flex Duct" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "FlexDuct", Description = "Systems → HVAC → Flex Duct" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "AirTerminal", Description = "Systems → HVAC → Air Terminal" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "FabricationPart", Description = "Systems → Fabrication → Fabrication Part" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "MultiPointRouting", Description = "Systems → Fabrication → Multi-Point Routing" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "MEPFabricationDuctworkStiffener", Description = "Systems → MEP Detailing → MEP Fabrication Ductwork Stiffener" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "PAndIDModeler", Description = "Systems → P&ID Collaboration → P&ID Modeler" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "MechanicalEquipment", Description = "Systems → Mechanical → Mechanical Equipment" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "MechanicalControlDevice", Description = "Systems → Mechanical → Mechanical Control Device" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Pipe", Description = "Systems → Plumbing & Piping → Pipe" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "PipePlaceholder", Description = "Systems → Plumbing & Piping → Pipe Placeholder" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ParallelPipes", Description = "Systems → Plumbing & Piping → Parallel Pipes" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "PipeFitting", Description = "Systems → Plumbing & Piping → Pipe Fitting" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "PipeAccessory", Description = "Systems → Plumbing & Piping → Pipe Accessory" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "FlexPipe", Description = "Systems → Plumbing & Piping → Flex Pipe" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "PlumbingEquipment", Description = "Systems → Plumbing & Piping → Plumbing Equipment" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "PlumbingFixture", Description = "Systems → Plumbing & Piping → Plumbing Fixture" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Sprinkler", Description = "Systems → Plumbing & Piping → Sprinkler" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ArcWire", Description = "Systems → Electrical → Wire" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "CableTray", Description = "Systems → Electrical → Cable Tray" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Conduit", Description = "Systems → Electrical → Conduit" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ParallelConduits", Description = "Systems → Electrical → Parallel Conduits" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "CableTrayFitting", Description = "Systems → Electrical → Cable Tray Fitting" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ElectricalEquipment", Description = "Systems → Electrical → Electrical Equipment" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ElectricalFixture", Description = "Systems → Electrical → Device → Electrical Fixture" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Communication", Description = "Systems → Electrical → Device → Communication" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Data", Description = "Systems → Electrical → Device → Data" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "FireAlarm", Description = "Systems → Electrical → Device → Fire Alarm" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Lighting", Description = "Systems → Electrical → Device → Lighting" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "NurseCall", Description = "Systems → Electrical → Device → Nurse Call" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Security", Description = "Systems → Electrical → Device → Security" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Telephone", Description = "Systems → Electrical → Device → Telephone" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "LightingFixture", Description = "Systems → Electrical → Lighting Fixture" });
+
+        //-----------Insert
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "LinkRevit", Description = "Insert → Link → Link Revit" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "LinkIFC", Description = "Insert → Link → Link IFC" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "LinkCAD", Description = "Insert → Link → Link CAD" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "LinkTopography", Description = "Insert → Link → Link Topography" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "DWFMarkup", Description = "Insert → Link → DWF Markup" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "PlaceDecal", Description = "Insert → Link → Decal → Place Decal" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "DecalTypes", Description = "Insert → Link → Decal → Decal Types" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "PointCloud", Description = "Insert → Link → Point Cloud" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "CoordinationModelLocal", Description = "Insert → Link → Coordination Model → Local" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "CoordinationModelAutodeskDocs", Description = "Insert → Link → Coordination Model → Autodesk Docs" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "LinkPDF", Description = "Insert → Link → Link PDF" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "LinkImage", Description = "Insert → Link → Link Image" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ManageLinks", Description = "Insert → Link → Manage Links" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ImportCAD", Description = "Insert → Import → Import CAD" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ImportGBXML", Description = "Insert → Import → Import gbXML" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ImportPDF", Description = "Insert → Import → Import PDF" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "ImportImage", Description = "Insert → Import → Import Image" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "LoadFamilyIntoProjectAndClose", Description = "Insert → Load from Library → Load Family" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "LoadAutodeskFamily", Description = "Insert → Load from Library → Load Autodesk Family" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "InsertViewsFromFile", Description = "Insert → Load from Library → Insert from File → Insert Views from File" });
+        commandItems.Add(new CommandItem() { CommandType = CommandType.Standard, PostableCommandName = "Insert2DElementsFromFile", Description = "Insert → Load from Library → Insert from File → Insert 2D Elements from File" });
+
+        //Autodesk.Revit.UI.PostableCommand.Insert2DElementsFromFile
     }
 }

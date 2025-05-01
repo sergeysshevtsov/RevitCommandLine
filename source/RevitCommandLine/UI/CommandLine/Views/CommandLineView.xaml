@@ -16,11 +16,23 @@
         BorderThickness="2"
         CornerRadius="3">
         <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
             <cbControl:ComboBoxAC
                 x:Name="comboBoxAC"
+                Grid.Column="0"
                 Margin="10"
                 FontFamily="Roboto"
                 FontSize="16" />
+            <Button
+                Grid.Column="1"
+                Width="21"
+                Height="41"
+                Margin="0,0,10,0"
+                Content="&#x23CE;"
+                FontWeight="Bold" />
         </Grid>
     </Border>
 </Window>

@@ -25,34 +25,49 @@ public class Application : IExternalApplication
 
     public Result OnStartup(UIControlledApplication application)
     {
+        GetRibbonButtonNames();
         CreateRibbon(application);
         return Result.Succeeded;
     }
 
     public Result OnShutdown(UIControlledApplication application) => Result.Succeeded;
 
-    ObservableCollection<CommandItem> commandItems = [];
-    public void GetRibbonButtonNames()
+    public ObservableCollection<CommandItem> CommandItems { get; set; } = [];
+    private List<Tuple<string, string, string, string, string>> _commandItems = new();
+
+    private void GetRibbonButtonNames()
     {
-        var ribbon = ComponentManager.Ribbon;
-        var tabs = ribbon.Tabs;
+        var tabs = ComponentManager.Ribbon.Tabs;
         foreach (var tab in tabs)
+            foreach (var panel in tab?.Panels)
+                CollectCommandItems(panel?.Source.Items, tab.AutomationName, panel.Source.Title);
+    }
+
+    private void CollectCommandItems(RibbonItemCollection items, string tabName, string panelName)
+    {
+        foreach (var item in items)
         {
-            var panels = tab.Panels;
-            foreach (var panel in panels)
+            if (item is Autodesk.Windows.RibbonButton button)
             {
-                var items = panel.Source.Items;
-                foreach (var item in items)
-                {
-                    if (item is Autodesk.Windows.RibbonButton button)
-                    {
-                        // To research - can we transform button ID into CommandPost item?
-                        //is there any way to get the command post that sent to Revit from the button?
-                        //can we collect full path to the command with Tab->Panel->DropDown button name(if needed)-> button name?
-                        var name = button.Name;
-                    }
-                }
+                if (string.IsNullOrEmpty(button?.AutomationName))
+                    continue;
+
+                var displayName = button.AutomationName.Replace("\r", " ").Replace("\n", " ");
+                var description = string.Concat(tabName, " → ", panelName, " → ", displayName);
+                CommandItems.Add(new CommandItem() {
+                    CommandType = CommandType.Standard,
+                    CommandId = button.Id,
+                    DisplayName = displayName,
+                    Description = description,
+                });
+                _commandItems.Add(new Tuple<string, string, string, string, string>(tabName, panelName, displayName, description, button.Id));
             }
+
+            if (item is RibbonFoldPanel foldPanel)
+                CollectCommandItems(foldPanel.Items, tabName, panelName);
+
+            if (item is RibbonRowPanel rowPanel)
+                CollectCommandItems(rowPanel.Items, tabName, panelName);
         }
     }
 }

@@ -8,6 +8,12 @@ using System.Windows.Media.Imaging;
 namespace RevitCommandLine;
 public class Application : IExternalApplication
 {
+    public static ObservableCollection<CommandItem> CommandItems { get; } = [];
+    public Application()
+    {
+        GetRibbonButtonNames();
+    }
+
     private void CreateRibbon(UIControlledApplication application)
     {
         var assemblyPath = Assembly.GetExecutingAssembly().Location;
@@ -25,15 +31,11 @@ public class Application : IExternalApplication
 
     public Result OnStartup(UIControlledApplication application)
     {
-        GetRibbonButtonNames();
         CreateRibbon(application);
         return Result.Succeeded;
     }
 
     public Result OnShutdown(UIControlledApplication application) => Result.Succeeded;
-
-    public ObservableCollection<CommandItem> CommandItems { get; set; } = [];
-    private List<Tuple<string, string, string, string, string>> _commandItems = new();
 
     private void GetRibbonButtonNames()
     {
@@ -47,20 +49,25 @@ public class Application : IExternalApplication
     {
         foreach (var item in items)
         {
-            if (item is Autodesk.Windows.RibbonButton button)
+            if (item is RibbonSplitButton splitbutton)
+                CollectCommandItems(splitbutton.Items, tabName, panelName);
+            else
+                if (item is Autodesk.Windows.RibbonButton button)
             {
                 if (string.IsNullOrEmpty(button?.AutomationName))
                     continue;
 
-                var displayName = button.AutomationName.Replace("\r", " ").Replace("\n", " ");
+                var displayName = button.AutomationName.Replace("\r\n", " ").Replace("\n", " ");
                 var description = string.Concat(tabName, " → ", panelName, " → ", displayName);
-                CommandItems.Add(new CommandItem() {
-                    CommandType = CommandType.Standard,
-                    CommandId = button.Id,
-                    DisplayName = displayName,
-                    Description = description,
-                });
-                _commandItems.Add(new Tuple<string, string, string, string, string>(tabName, panelName, displayName, description, button.Id));
+
+                if (CommandItems.FirstOrDefault(c => c.CommandId == button.Id) == null)
+                    CommandItems.Add(new CommandItem()
+                    {
+                        CommandType = CommandType.Standard,
+                        DisplayName = displayName,
+                        Description = description,
+                        RevitCommandId = RevitCommandId.LookupCommandId(button.Id)
+                    });
             }
 
             if (item is RibbonFoldPanel foldPanel)

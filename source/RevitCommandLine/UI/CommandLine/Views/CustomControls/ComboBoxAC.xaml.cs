@@ -219,19 +219,19 @@ namespace RevitCommandLine.UI.CommandLine.Views.CustomControls
 
                         if (FilterMode == AutoCompleteFilterMode.Contains || FilterMode == AutoCompleteFilterMode.None)
                         {
-                            return (!string.IsNullOrEmpty(lineItem.PostableCommandName) && lineItem.PostableCommandName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                            return (!string.IsNullOrEmpty(lineItem.DisplayName) && lineItem.DisplayName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
                                (!string.IsNullOrEmpty(lineItem.Description) && lineItem.Description.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0);
                         }
 
                         if (FilterMode == AutoCompleteFilterMode.Equals)
                         {
-                            return (!string.IsNullOrEmpty(lineItem.PostableCommandName) && lineItem.PostableCommandName.Equals(searchText)) ||
+                            return (!string.IsNullOrEmpty(lineItem.DisplayName) && lineItem.DisplayName.Equals(searchText)) ||
                                (!string.IsNullOrEmpty(lineItem.Description) && lineItem.Description.Equals(searchText));
                         }
 
                         if (FilterMode == AutoCompleteFilterMode.StartsWith)
                         {
-                            return (!string.IsNullOrEmpty(lineItem.PostableCommandName) && lineItem.PostableCommandName.StartsWith(searchText, StringComparison.OrdinalIgnoreCase)) ||
+                            return (!string.IsNullOrEmpty(lineItem.DisplayName) && lineItem.DisplayName.StartsWith(searchText, StringComparison.OrdinalIgnoreCase)) ||
                                (!string.IsNullOrEmpty(lineItem.Description) && lineItem.Description.StartsWith(searchText, StringComparison.OrdinalIgnoreCase));
                         }
                     }

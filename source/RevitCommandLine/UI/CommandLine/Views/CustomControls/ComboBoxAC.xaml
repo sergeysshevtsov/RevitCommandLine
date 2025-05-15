@@ -46,7 +46,7 @@
                         <TextBlock
                             Width="250"
                             FontWeight="Bold"
-                            Text="{Binding PostableCommandName}"
+                            Text="{Binding DisplayName}"
                             ToolTip="{Binding Description}" />
                         <TextBlock
                             Foreground="Gray"

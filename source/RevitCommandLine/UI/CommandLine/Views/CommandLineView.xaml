@@ -8,11 +8,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Width="450"
     Height="65"
-    Background="Transparent"
+    AllowsTransparency="True"
+    Background="#FFF5F5F5"
     ResizeMode="NoResize"
     WindowStyle="None">
     <Border
-        BorderBrush="#1E88E5"
+        BorderBrush="Black"
         BorderThickness="2"
         CornerRadius="3">
         <Grid Background="White">
@@ -29,7 +30,7 @@
             <Button
                 Grid.Column="1"
                 Width="21"
-                Height="41"
+                Height="40"
                 Margin="0,0,10,0"
                 Content="&#x23CE;"
                 FontWeight="Bold" />

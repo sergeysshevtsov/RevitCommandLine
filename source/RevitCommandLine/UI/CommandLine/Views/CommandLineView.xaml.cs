@@ -32,8 +32,7 @@ public partial class CommandLineView : Window
 
         comboBoxAC.Loaded += ComboBoxAC_Loaded;
 
-        ObservableCollection<CommandItem> commandItems = [];
-        new StandardCommandsList(ref commandItems);
+        ObservableCollection<CommandItem> commandItems = Application.CommandItems;
         new CustomCommandsList(ref commandItems);
         comboBoxAC.ItemsSource = commandItems;
     }

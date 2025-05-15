@@ -60,7 +60,7 @@ public class Application : IExternalApplication
                 var displayName = button.AutomationName.Replace("\r\n", " ").Replace("\n", " ");
                 var description = string.Concat(tabName, " → ", panelName, " → ", displayName);
 
-                if (CommandItems.FirstOrDefault(c => c.CommandId == button.Id) == null)
+                if (CommandItems.FirstOrDefault(c => c.CommandId == button.Id || c.Description == description) == null)
                     CommandItems.Add(new CommandItem()
                     {
                         CommandType = CommandType.Standard,

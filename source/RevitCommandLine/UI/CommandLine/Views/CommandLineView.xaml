@@ -33,7 +33,7 @@
                 Height="40"
                 Margin="0,0,10,0"
                 Content="&#x23CE;"
-                FontWeight="Bold" />
+                FontWeight="Bold" Click="Button_Click" />
         </Grid>
     </Border>
 </Window>

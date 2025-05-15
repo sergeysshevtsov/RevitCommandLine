@@ -69,4 +69,9 @@ public partial class CommandLineView : Window
             return displayName.Trim();
         return string.Empty;
     }
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        Window_Deactivated(sender, e);
+    }
 }

@@ -1,5 +1,4 @@
-﻿using RevitCommandLine.UI.CommandLine.Commands;
-using RevitCommandLine.UI.CommandLine.Models;
+﻿using RevitCommandLine.UI.CommandLine.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -33,7 +32,6 @@ public partial class CommandLineView : Window
         comboBoxAC.Loaded += ComboBoxAC_Loaded;
 
         ObservableCollection<CommandItem> commandItems = Application.CommandItems;
-        new CustomCommandsList(ref commandItems);
         comboBoxAC.ItemsSource = commandItems;
     }
 
@@ -62,16 +60,19 @@ public partial class CommandLineView : Window
             CommandItem = ci;
     }
 
-    private string GetDisplayName(string description)
-    {
-        var displayName = description.Split('→').Last();
-        if (!string.IsNullOrEmpty(displayName))
-            return displayName.Trim();
-        return string.Empty;
-    }
-
     private void Button_Click(object sender, RoutedEventArgs e)
     {
         Window_Deactivated(sender, e);
+    }
+
+    private void TitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        if (e.ButtonState == MouseButtonState.Pressed)
+            DragMove(); 
+    }
+
+    private void CloseButton_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
     }
 }
